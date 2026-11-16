@@ -5,6 +5,11 @@ Unreleased
 
 -   Drop support for Python 3.8 and 3.9.
 -   Remove previously deprecated code.
+-   Limit the decompressed size of URL safe payloads to 1 MiB by default,
+    raising :exc:`.PayloadTooLarge` when exceeded. The limit is enforced
+    while decompressing, so a compressed payload is never fully expanded
+    before being rejected. Configure it with the ``max_decompress_size``
+    argument, or set it to ``None`` to disable the limit.
 
 
 Version 2.2.0

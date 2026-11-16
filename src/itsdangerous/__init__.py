@@ -6,6 +6,7 @@ from .exc import BadHeader as BadHeader
 from .exc import BadPayload as BadPayload
 from .exc import BadSignature as BadSignature
 from .exc import BadTimeSignature as BadTimeSignature
+from .exc import PayloadTooLarge as PayloadTooLarge
 from .exc import SignatureExpired as SignatureExpired
 from .serializer import Serializer as Serializer
 from .signer import HMACAlgorithm as HMACAlgorithm

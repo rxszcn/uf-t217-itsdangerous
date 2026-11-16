@@ -104,3 +104,23 @@ class BadPayload(BadData):
         #: If available, the error that indicates why the payload was
         #: not valid. This might be ``None``.
         self.original_error: Exception | None = original_error
+
+
+class PayloadTooLarge(BadPayload):
+    """Raised if a compressed payload decompresses to more than the
+    configured maximum size. This is a subclass of
+    :class:`BadPayload`, so existing handlers continue to catch it.
+
+    .. versionadded:: 2.3
+    """
+
+    def __init__(
+        self,
+        message: str,
+        original_error: Exception | None = None,
+        limit: int | None = None,
+    ):
+        super().__init__(message, original_error=original_error)
+
+        #: The limit, in bytes, that the decompressed payload exceeded.
+        self.limit: int | None = limit
